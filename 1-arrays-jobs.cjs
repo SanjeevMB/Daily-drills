@@ -44,10 +44,16 @@ let array = [{"id":1,"first_name":"Gregg","last_name":"Lacey","job":"Web Develop
 
 // Question-2;
 
-let num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 let salary = array.map((element) => { 
     return +element.salary.slice(1);
 })
 console.log(salary);
+
+// Question-4
+let sum = salary.reduce((accumulator, element) =>{
+    return accumulator + element;
+})
+
+console.log(sum);
 
 
