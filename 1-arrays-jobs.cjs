@@ -56,4 +56,17 @@ let sum = salary.reduce((accumulator, element) =>{
 
 console.log(sum);
 
+// Question-5
+
+let countrySalarySum = {};
+let countryBasedSum = array.forEach(element => {
+    if(countrySalarySum[element.location] == undefined){
+        countrySalarySum[element.location] = +element.salary.slice(1);
+    }else{
+        countrySalarySum[element.location] += +element.salary.slice(1)
+    }
+})
+
+console.log(countrySalarySum);
+
 
