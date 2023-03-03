@@ -34,9 +34,21 @@ function question1(input) {
 
 // Question 2.
 
-function question2(input){
+function question2(input) {
     return input.map((element) => element.ip_address.split('.').map((element) => +element));
 }
 
-console.log(question2(input));
+// console.log(question2(input));
 
+// Question 3.1.
+
+function question3_1(input) {
+    let sumOf2ndComponent = 0;
+    input.map((element) => element.ip_address.split('.').map((element) => +element))
+        .forEach(element => {
+            sumOf2ndComponent +=  element[1];
+        })
+    return sumOf2ndComponent;
+}
+
+console.log(question3_1(input));
