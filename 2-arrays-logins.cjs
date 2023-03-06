@@ -105,6 +105,24 @@ function orgEmails(input) {
 
 // console.log(orgEmails(input));
 
+// Question 6.
+
+function orgAuComMails(input) {
+
+    let regEx1 = /.org/g;
+    let regEx2 = /.au/g;
+    let regEx3 = /.com/g;
+
+    return input.filter((element) => {
+        return regEx1.test(element.email) ||
+            regEx2.test(element.email) ||
+            regEx3.test(element.email)
+    });
+
+}
+
+console.log(orgAuComMails(input));
+
 // Question 7.
 
 function firstNamereverseSort(input) {
