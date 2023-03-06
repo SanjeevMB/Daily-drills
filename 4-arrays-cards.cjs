@@ -24,28 +24,45 @@ let cards = [
     Use method chaining to solve #3, #4, #5, #6 and #7.
 
     NOTE: Do not change the name of this file 
+
+
 */
 
 // Question 1.
 
 function cardsSum(cards) {
-    return cards.map((element) => {
-        return (element.card_number)
+
+    let cardNumbers = [];
+
+    cards.map((element) => {
+
+        if ((element.card_number)
             .split('')
             .map((element, index) => {
+
                 return +element;
-            })
-            .map((element, index) => {
-                let sum = 0;
-                if (index % 2 === 0) {
-                    sum += element;
-                }
-                return sum;
-            })
+
+            }).filter((element, index) => {
+
+                return index % 2 !== 0;
+
+            }).reduce((accumulator, element, index, array) => {
+
+                return accumulator + element;
+
+            }, 0) % 2 !== 0) {
+
+            cardNumbers.push((Number(element.card_number)));
+
+        }
+
     });
 
+    return cardNumbers;
+
 }
-// console.log(cardsSum(cards));
+
+console.log(cardsSum(cards));
 
 // Question 2.
 
@@ -53,8 +70,7 @@ function cardIssuedBeforeJune(cards) {
 
     return cards.filter((element) => {
 
-        return element.issue_date
-            .split('/')[0] < 6;
+        return element.issue_date.split('/')[0] < 6;
 
     });
 }
@@ -68,10 +84,13 @@ function randomCvv(cards) {
     let cvvCards = [...cards];
 
     cvvCards.map((element) => {
+
         return element.CVV = Number((Math.random() * 1000).toFixed(0));
+        
     })
 
     return cvvCards;
+
 }
 
 // console.log(randomCvv(cards));
@@ -103,6 +122,7 @@ function cardsBeforeMarch(cards) {
     marchCards.map((element) => {
 
         if (element.issue_date.split('/')[0] < 6) {
+
             element.validty = false;
         }
 
@@ -111,7 +131,68 @@ function cardsBeforeMarch(cards) {
     return marchCards;
 }
 
-console.log(cardsBeforeMarch(cards));
+// console.log(cardsBeforeMarch(cards));
 
 // Question 6.
+
+function cardSortByDate(cards) {
+
+    let monthsGroup = [...cards];
+
+    return monthsGroup.sort((a, b) => {
+
+        if (Number(a.issue_date.split('/')[0]) > Number(b.issue_date.split('/')[0])) {
+
+            return 1;
+
+        } else if (Number(a.issue_date.split('/')[0]) < Number(b.issue_date.split('/')[0])) {
+
+            return -1;
+
+        } else {
+
+            if (Number(a.issue_date.split('/')[0]) > Number(b.issue_date.split('/')[0])) {
+
+                return 1;
+
+            } else {
+
+                return -1;
+
+            }
+
+        }
+
+    });
+
+}
+
+// console.log(cardSortByDate(cards));
+
 // Question 7.
+
+function cardsGroupedByDate(cards) {
+
+    let cardClone = [...cards];
+
+    let monthsGroup = {};
+
+    cardClone.map((element) => {
+
+        if (monthsGroup[element.issue_date.split('/')[0]] === undefined) {
+
+            monthsGroup[element.issue_date.split('/')[0]] = [element];
+
+        } else {
+
+            monthsGroup[element.issue_date.split('/')[0]].push(element);
+
+        }
+
+    })
+
+    return monthsGroup;
+
+}
+
+// console.log(cardsGroupedByDate(cards));
