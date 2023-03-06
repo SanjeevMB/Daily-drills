@@ -46,14 +46,14 @@ let array = [
 
 // Question-1.
 
-function webDevelopers(array){
+function webDevelopers(array) {
     let regEx = /Web Developer/g;
     return array.filter((element) => {
         return regEx.test(element.job);
     });
 }
 
-console.log(webDevelopers(array));
+// console.log(webDevelopers(array));
 
 // Question-2;
 
@@ -63,6 +63,24 @@ function salaryConvertor(array) {
     });
 }
 // console.log(salaryConvertor(array));
+
+// Question 3.
+
+function correctedSalary(array) {
+
+    let arrayClone = [...array];
+
+    arrayClone.map((element) => {
+
+        element.corrected_salary = Number(element.salary.slice(1)) * 10000;
+
+    });
+
+    return arrayClone;
+
+}
+
+// console.log(correctedSalary(array));
 
 // Question-4
 
