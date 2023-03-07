@@ -3,20 +3,24 @@ const items = [
         name: 'Orange',
         available: true,
         contains: "Vitamin C",
-    }, {
+    },
+    {
         name: 'Mango',
         available: true,
         contains: "Vitamin K, Vitamin C",
-    }, {
+    },
+    {
         name: 'Pineapple',
         available: true,
         contains: "Vitamin A",
-    }, {
+    },
+    {
         name: 'Raspberry',
         available: false,
         contains: "Vitamin B, Vitamin A",
 
-    }, {
+    },
+    {
         name: 'Grapes',
         contains: "Vitamin D",
         available: false,
@@ -93,36 +97,46 @@ function vitaminAItems(items) {
 
 // Question 4.
 
-// function itemGroupByVitamine(item) {
+function itemGroupByVitamine(item) {
 
-//     let vitamineGroupFruit = {};
+    let vitamineGroupFruit = {};
+    let cloneItems = [...item];
 
-//     let cloneItems = [...item];
+    cloneItems.map((element) => {
 
-//     cloneItems.map((element) => {
+        return element.contains = element.contains.split(',')
 
-//         element.contains = element.contains.split(',');
+            .map((element) => {
 
-//     })
+                return element.trim();
 
-//     cloneItems.map((elementOuter) => {
+            });
 
-//         if (vitamineGroupFruit[elementOuter.contains
+    })
 
-//             .map((elementInner) => {
+    cloneItems.map((elementOuter, index) => {
 
-//                 return elementInner;
+        let vitamine = elementOuter.contains;
 
-//             })]) {
+        vitamine.map((elementInner) => {
 
-//                 vitamineGroupFruit.
+            if (vitamineGroupFruit[elementInner] === undefined) {
 
-//         }
-//     })
+                vitamineGroupFruit[elementInner] = [elementOuter];
 
-    // return cloneItems;
+            } else {
 
-// }
+                vitamineGroupFruit[elementInner].push(elementOuter);
+
+            }
+
+        })
+
+    })
+
+    return vitamineGroupFruit;
+
+}
 
 console.log(itemGroupByVitamine(items));
 
