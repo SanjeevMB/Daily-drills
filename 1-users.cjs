@@ -134,7 +134,7 @@ function sortedUsersBySeniory(users) {
     })
 }
 
-console.log(sortedUsersByAge(users));
+// console.log(sortedUsersByAge(users));
 
 // Question 4.
 
@@ -170,6 +170,10 @@ function usersGroupOnProgrammingLanguage(users){
 
             languageGroup[element.desgination][usersName[index]] = element;
 
+        } else {
+
+            languageGroup[element.desgination][usersName[index]] = element;
+            
         }
 
     });
