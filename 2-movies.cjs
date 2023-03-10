@@ -92,11 +92,11 @@ function leonardoDicaprioMovies(allMovies) {
 
         if(element.actors.includes('Leonardo Dicaprio')){
 
-            return accumulator[moviesName[index]] = element;
+            accumulator[moviesName[index]] = element;
 
         }
 
-        // return accumulator;
+        return accumulator;
 
     }, {});
 
