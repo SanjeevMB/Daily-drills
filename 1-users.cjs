@@ -94,6 +94,7 @@ function sortedUsersByAge(users) {
     let usersDetail = Object.values(users);
 
     return usersDetail.sort((first, second) => {
+
         if(first.age < second.age) {
 
             return 1;
@@ -107,7 +108,8 @@ function sortedUsersByAge(users) {
              return 0;
 
         }
-    })
+
+    });
 }
 
 // console.log(sortedUsersByAge(users));
@@ -118,7 +120,8 @@ function sortedUsersBySeniory(users) {
     let usersDetail = Object.values(users);
 
     return usersDetail.sort((first, second) => {
-        if(first.age < second.age) {
+
+        if(first.desgination.includes('Senior') && second.desgination.includes('Junior')) {
 
             return 1;
 
@@ -131,10 +134,12 @@ function sortedUsersBySeniory(users) {
              return 0;
 
         }
-    })
+
+    });
+
 }
 
-// console.log(sortedUsersByAge(users));
+console.log(sortedUsersBySeniory(users));
 
 // Question 4.
 
@@ -173,7 +178,7 @@ function usersGroupOnProgrammingLanguage(users){
         } else {
 
             languageGroup[element.desgination][usersName[index]] = element;
-            
+
         }
 
     });
@@ -183,5 +188,3 @@ function usersGroupOnProgrammingLanguage(users){
 }
 
 console.log(usersGroupOnProgrammingLanguage(users));
-
-
