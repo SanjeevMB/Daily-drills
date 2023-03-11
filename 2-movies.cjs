@@ -63,48 +63,50 @@ const favouritesMovies = {
 function moviesEarnsMoreThan$500M(allMovies) {
 
     let moviesName = Object.keys(allMovies)
-    .filter((element, index, array) => {
+        .filter((element, index, array) => {
 
-        return Number(allMovies[element].totalEarnings.slice(1, -1)) > 500;
+            return Number(allMovies[element].totalEarnings.slice(1, -1)) > 500;
 
-    }).reduce((moviesEarns$500M, element, index, array) => {
+        }).reduce((moviesEarns$500M, element, index, array) => {
 
-        moviesEarns$500M[element] = allMovies[element];
+            moviesEarns$500M[element] = { ...allMovies[element] };
 
-        return moviesEarns$500M;
+            return moviesEarns$500M;
 
-    }, {});
+        }, {});
 
     return moviesName;
 
 }
 
-console.log(moviesEarnsMoreThan$500M(favouritesMovies));
+// console.log(moviesEarnsMoreThan$500M(favouritesMovies));
 
 // Question 2.
 
+function moviesEarns$500MAnd3Oscar(allMovies) {
+
+    let moviesName = Object.keys(allMovies)
+        .filter((element, index, array) => {
+
+            return (allMovies[element].oscarNominations > 3) && (Number(allMovies[element].totalEarnings.slice(1, -1)) > 500);
+
+        }).reduce((movies, element, index, array) => {
+
+            movies[element] = { ...allMovies[element] };
+
+            return movies;
+
+        }, {});
+
+    return moviesName;
+
+}
+
+// console.log(moviesEarns$500MAnd3Oscar(favouritesMovies));
+
 // Question 3.
 
-function leonardoDicaprioMovies(allMovies) {
-
-    let actorLeonardoDicaprioMovies = [];
-
-    let allMoviesName = Object.entries(allMovies);
-    let allMoviesInforamtion = Object.values(allMovies);
-
-    // return allMoviesInforamtion.reduce((accumulator, element, index, array) => {
-
-    //     if (element.actors.includes('Leonardo Dicaprio')) {
-
-    //         accumulator[allMoviesName[index]] = element;
-
-    //     }
-        
-    //     return accumulator;
-
-    // }, {});
-
-    return allMoviesName;
+function moviesEarnsMoreThan$500MAnd3Oscar(allMovies) {
 
 }
 
