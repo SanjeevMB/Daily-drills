@@ -106,12 +106,83 @@ function moviesEarns$500MAnd3Oscar(allMovies) {
 
 // Question 3.
 
-function moviesEarnsMoreThan$500MAnd3Oscar(allMovies) {
+function leonardoDicaprioMovies(allMovies) {
+
+    let moviesName = Object.keys(allMovies)
+        .filter((element, index, array) => {
+
+            return allMovies[element].actors.includes('Leonardo Dicaprio');
+
+        }).reduce((movies, element, index, array) => {
+
+            movies[element] = { ...allMovies[element] };
+
+            return movies;
+
+        }, {});
+
+    return moviesName;
 
 }
 
 // console.log(leonardoDicaprioMovies(favouritesMovies));
 
 // Question 4.
+
+function sortingOnImdb(allMovies) {
+
+    let cloneMovies = { ...allMovies };
+
+    let moviesName = Object.keys(cloneMovies)
+        .map((element, index, array) => {
+
+            return element = { ...cloneMovies[element] };
+
+        }).map((element, index, array) => {
+
+            element.totalEarnings = Number(element.totalEarnings
+                .slice(1, -1));
+
+
+            return element;
+
+        });
+
+
+    moviesName.sort((first, second) => {
+
+        if (first.imdbRating > second.imdbRating) {
+
+            return 1;
+
+        } else if (first.imdbRating < second.imdbRating) {
+
+            return -1;
+
+        } else {
+            
+            if(first.totalEarnings > second.totalEarnings){
+
+                return 1;
+
+            } else if(first.totalEarnings < second.totalEarnings){
+
+                return -1;
+
+            }else{
+
+                return 0;
+                
+            }
+
+        }
+
+    });
+
+    return moviesName
+
+}
+
+console.log(sortingOnImdb(favouritesMovies));
 
 // Question 5.
