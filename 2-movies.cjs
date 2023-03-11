@@ -41,7 +41,7 @@ const favouritesMovies = {
         genre: ["drama"],
         totalEarnings: "$800M"
     }
-}
+};
 
 
 /*
@@ -62,20 +62,24 @@ const favouritesMovies = {
 
 function moviesEarnsMoreThan$500M(allMovies) {
 
-    let allMoviesName = Object.keys(allMovies);
-    let allMoviesInforamtion = Object.values(allMovies);
+    let moviesName = Object.keys(allMovies)
+    .filter((element, index, array) => {
 
-    allMoviesInforamtion.map((element, index, array) => {
+        return Number(allMovies[element].totalEarnings.slice(1, -1)) > 500;
 
-        return Number(element.totalEarnings.slice(1, -1)); 
+    }).reduce((moviesEarns$500M, element, index, array) => {
 
-    });
+        moviesEarns$500M[element] = allMovies[element];
 
-    return allMovies;
+        return moviesEarns$500M;
+
+    }, {});
+
+    return moviesName;
 
 }
 
-// console.log(moviesEarnsMoreThan$500M(favouritesMovies));
+console.log(moviesEarnsMoreThan$500M(favouritesMovies));
 
 // Question 2.
 
@@ -83,26 +87,28 @@ function moviesEarnsMoreThan$500M(allMovies) {
 
 function leonardoDicaprioMovies(allMovies) {
 
-    let actorLeonardoDicaprioMovies = {};
+    let actorLeonardoDicaprioMovies = [];
 
-    let moviesName = Object.entries(allMovies);
-    let moviesInformation = Object.values(allMovies);
+    let allMoviesName = Object.entries(allMovies);
+    let allMoviesInforamtion = Object.values(allMovies);
 
-    return moviesInformation.reduce((accumulator, element, index, array) => {
+    // return allMoviesInforamtion.reduce((accumulator, element, index, array) => {
 
-        if(element.actors.includes('Leonardo Dicaprio')){
+    //     if (element.actors.includes('Leonardo Dicaprio')) {
 
-            accumulator[moviesName[index]] = element;
+    //         accumulator[allMoviesName[index]] = element;
 
-        }
+    //     }
+        
+    //     return accumulator;
 
-        return accumulator;
+    // }, {});
 
-    }, {});
+    return allMoviesName;
 
 }
 
-console.log(leonardoDicaprioMovies(favouritesMovies));
+// console.log(leonardoDicaprioMovies(favouritesMovies));
 
 // Question 4.
 
