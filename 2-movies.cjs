@@ -131,55 +131,45 @@ function leonardoDicaprioMovies(allMovies) {
 
 function sortingOnImdb(allMovies) {
 
-    let cloneMovies = { ...allMovies };
+    let moviesName = Object.keys(allMovies);
 
-    let moviesName = Object.keys(cloneMovies)
-        .map((element, index, array) => {
+    moviesName.sort((firstMOvie, secondMovie) => {
 
-            return element = { ...cloneMovies[element] };
-
-        }).map((element, index, array) => {
-
-            element.totalEarnings = Number(element.totalEarnings
-                .slice(1, -1));
-
-
-            return element;
-
-        });
-
-
-    moviesName.sort((first, second) => {
-
-        if (first.imdbRating > second.imdbRating) {
+        if(allMovies[firstMOvie].imdbRating > allMovies[secondMovie].imdbRating){
 
             return 1;
 
-        } else if (first.imdbRating < second.imdbRating) {
+        }else if(allMovies[firstMOvie].imdbRating < allMovies[secondMovie].imdbRating){
 
             return -1;
 
-        } else {
-            
-            if(first.totalEarnings > second.totalEarnings){
+        }else{
+
+            if(Number(allMovies[firstMOvie].totalEarnings.slice(1, -1)) > Number(allMovies[secondMovie].totalEarnings.slice(1, -1))){
 
                 return 1;
 
-            } else if(first.totalEarnings < second.totalEarnings){
+            }else if(Number(allMovies[firstMOvie].totalEarnings.slice(1, -1)) < Number(allMovies[secondMovie].totalEarnings.slice(1, -1))){
 
                 return -1;
 
-            }else{
+            }else {
 
                 return 0;
-                
+
             }
 
         }
 
     });
 
-    return moviesName
+    return moviesName.reduce((imdbSortedMovies, element, index, array) => {
+
+        imdbSortedMovies[element] = {...allMovies[element]};
+
+        return imdbSortedMovies;
+
+    }, {});
 
 }
 
